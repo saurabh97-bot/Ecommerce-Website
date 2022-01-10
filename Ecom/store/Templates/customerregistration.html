@@ -1,0 +1,44 @@
+{% include 'base.html' %}
+{% include 'Navbar.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+        margin:auto;
+        display:block;
+        }
+        .errorlist{
+        color: red;
+        }
+    </style>
+</head>
+<body style="background-color:Azure;">
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h3 class="text-center">Customer Registration Form</h3>
+            <hr>
+            <form action="" method="post">
+<fieldset>
+                {% csrf_token %}
+                <table>
+                {{form.as_table}}
+                           <tr>
+                           <td colspan="6">
+                               <button class="btn-center btn-secondary">Register as Customer</button>
+                           </td>
+                           </tr>
+                </table>
+</fieldset>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
+{% include 'footer.html' %}

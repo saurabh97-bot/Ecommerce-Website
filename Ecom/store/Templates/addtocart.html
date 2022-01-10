@@ -1,0 +1,19 @@
+{% include 'base.html' %}
+{% include 'navbar.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Product Added to Cart Successfully.</h2>
+<!--<a href="" class="btn btn-info btn-lg float-right" type="submit">Continue Shopping</a>-->
+    <a class="btn btn-info btn-lg float-center" href="{% url 'checkout' %}">Proceed to Checkout</a>
+</div>
+
+{% endblock %}
+</body>
+</html>
+{% include 'footer.html' %}

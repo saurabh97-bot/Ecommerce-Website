@@ -1,0 +1,64 @@
+{% include 'base.html' %}
+{% include 'Navbar.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color:Azure;">
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="text-center">Items in the cart</h3>
+            <a href="{% url 'mycart' %}">Update Cart</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cp in cart.cartproduct_set.all %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{cp.product.name}}</td>
+                    <td>{{cp.rate}}</td>
+                    <td>{{cp.quantity}}</td>
+                    <td>{{cp.subtotal}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th class="text-right" colspan="4">Total</th>
+                    <th>Rs.{{cart.total}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center">Checkout Form</h3>
+            <form action="" method="post">
+                <fieldset>
+                {% csrf_token %}
+                <table>
+                {{form.as_table}}
+                    <tr>
+                        <td colspan="2">
+                            <button class="btn btn-info" >Place order</button>
+                        </td>
+                    </tr>
+                </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}
+{% include 'footer.html' %}

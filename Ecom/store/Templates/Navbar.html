@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.navbar-expand-sm{
+background-color: DarkOrchid;
+}
+</style>
+<body>
+<div class="navbar navbar-expand-sm">
+  <a href="" class="w3-bar-item w3-button">Home</a>
+  <a href="All-products" class="w3-bar-item w3-button">Category</a>
+  <a href="my-cart" class="w3-bar-item w3-button">Cart</a>
+
+  {% if request.user.customer %}
+  Welcome {{request.user.username}}!
+  <a href="profile">My Profile</a>
+  <a href="{% url 'customerlogout' %}">Logout</a>
+  {% else %}
+  <a href="{% url 'customerregistration' %}" class="w3-bar-item w3-button">Register</a>
+  <a href="{% url 'customerlogin' %}" class="w3-bar-item w3-button">Login</a>
+  {% endif %}
+</div>
+</body>
+</html>

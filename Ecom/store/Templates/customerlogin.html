@@ -1,0 +1,48 @@
+{% include 'base.html' %}
+{% include 'Navbar.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+        margin:auto;
+        display:block;
+        }
+        .errorlist{
+        color: red;
+        }
+    </style>
+</head>
+<body style="background-color:Azure;">
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h3 class="text-center">Customer Login Form</h3>
+            <hr>
+            <form action="" method="post">
+<fieldset>
+                {% csrf_token %}
+                <table>
+                {{form.as_table}}
+                           <tr>
+                           <td colspan="6">
+                               <button class="btn-center btn-secondary">Login</button>
+                           </td>
+                           </tr>
+                {% if error %}
+                <li style="color: red;">{{error}}</li>
+                {% endif %}
+                </table>
+</fieldset>
+            </form>
+<p class="text-center">or don't have an account? <a href="{% url 'customerregistration' %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">Register Here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
+{% include 'footer.html' %}
